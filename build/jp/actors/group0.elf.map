@@ -1,0 +1,659 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x4000000
+LOAD build/jp/actors/group0.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x0000000000400094                . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x0000000000400094       0x18
+ *(.reginfo)
+ .reginfo       0x0000000000400094       0x18 build/jp/actors/group0.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x00000000004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x00000000004000ac        0x0 build/jp/actors/group0.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x00000000004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x0000000004000000        0x0
+                0x0000000004000000                _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x0000000004000000                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x0000000004000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000004000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000004000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000004000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x0000000004000000                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x0000000004000000    0x36750
+                0x0000000004000000                _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000004000000    0x36750 build/jp/actors/group0.o
+                0x000000000400de20                mario_butt_dl
+                0x000000000400e0b8                mario_butt
+                0x000000000400e0e8                mario_metal_butt
+                0x000000000400e4b0                mario_left_arm_shared_dl
+                0x000000000400e5f8                mario_left_arm
+                0x000000000400e718                mario_left_forearm_shared_dl
+                0x000000000400eb78                mario_left_hand_closed_shared_dl
+                0x000000000400ed10                mario_left_hand_closed
+                0x000000000400f0c0                mario_right_arm_shared_dl
+                0x000000000400f208                mario_right_arm
+                0x000000000400f328                mario_right_forearm_shared_dl
+                0x000000000400f6e8                mario_right_hand_closed_dl
+                0x000000000400f878                mario_right_hand_closed
+                0x000000000400f898                mario_metal_right_hand_closed
+                0x000000000400fac8                mario_left_thigh_dl
+                0x000000000400fbd0                mario_left_thigh
+                0x000000000400fc00                mario_metal_left_thigh
+                0x000000000400fd38                mario_left_leg_shared_dl
+                0x000000000400ffd8                mario_left_foot_shared_dl
+                0x00000000040100c0                mario_left_foot
+                0x00000000040102d0                mario_right_thigh_shared_dl
+                0x00000000040103d8                mario_right_thigh
+                0x00000000040105f8                mario_right_leg_shared_dl
+                0x0000000004010820                mario_right_foot_dl
+                0x0000000004010908                mario_right_foot
+                0x0000000004010948                mario_metal_right_foot
+                0x0000000004011348                mario_yellow_button_dl
+                0x00000000040113a8                mario_pants_overalls_shared_dl
+                0x0000000004011680                mario_tshirt_shared_dl
+                0x0000000004011768                mario_torso_dl
+                0x0000000004011790                mario_torso
+                0x0000000004011810                mario_metal_torso_shared_dl
+                0x00000000040126d0                mario_m_logo_dl
+                0x0000000004012708                mario_eyes_cap_on_dl
+                0x0000000004012770                mario_hair_sideburn_cap_on_dl
+                0x00000000040127c0                mario_mustache_cap_on_dl
+                0x0000000004012858                mario_face_part_cap_on_dl
+                0x0000000004012b18                mario_face_cap_dl
+                0x0000000004012c90                mario_face_back_hair_cap_on_dl
+                0x0000000004012d80                mario_face_cap_on_dl
+                0x0000000004012db0                mario_cap_on_eyes_front
+                0x0000000004012ea0                mario_cap_on_eyes_half_closed
+                0x0000000004012f90                mario_cap_on_eyes_closed
+                0x0000000004013080                mario_cap_on_eyes_right
+                0x0000000004013170                mario_cap_on_eyes_left
+                0x0000000004013260                mario_cap_on_eyes_up
+                0x0000000004013350                mario_cap_on_eyes_down
+                0x0000000004013440                mario_cap_on_eyes_dead
+                0x0000000004013530                mario_metal_cap_on_shared_dl
+                0x0000000004014680                mario_eyes_cap_off_dl
+                0x00000000040146e8                mario_mustache_cap_off_dl
+                0x0000000004014778                mario_hair_sideburn_cap_off_dl
+                0x00000000040147c8                mario_face_part_cap_off_dl
+                0x0000000004014aa0                mario_face_hair_cap_off_dl
+                0x0000000004014d90                mario_face_cap_off_dl
+                0x0000000004014db8                mario_cap_off_eyes_front
+                0x0000000004014e88                mario_cap_off_eyes_half_closed
+                0x0000000004014f58                mario_cap_off_eyes_closed
+                0x0000000004015028                mario_cap_off_eyes_right
+                0x00000000040150f8                mario_cap_off_eyes_left
+                0x00000000040151c8                mario_cap_off_eyes_up
+                0x0000000004015298                mario_cap_off_eyes_down
+                0x0000000004015368                mario_cap_off_eyes_dead
+                0x0000000004015438                mario_metal_cap_off_shared_dl
+                0x00000000040158a8                mario_medium_poly_butt_dl
+                0x0000000004015a08                mario_medium_poly_butt
+                0x0000000004015a38                mario_metal_medium_poly_butt
+                0x0000000004015ba0                mario_medium_poly_left_arm_shared_dl
+                0x0000000004015c10                mario_medium_poly_left_arm
+                0x0000000004015d20                mario_medium_poly_left_forearm_shared_dl
+                0x0000000004016060                mario_medium_poly_left_hand_closed_shared_dl
+                0x0000000004016190                mario_medium_poly_left_hand_closed
+                0x00000000040162a0                mario_medium_poly_right_arm_shared_dl
+                0x0000000004016310                mario_medium_poly_right_arm
+                0x0000000004016420                mario_medium_poly_right_forearm_shared_dl
+                0x0000000004016780                mario_medium_poly_right_hand_closed_dl
+                0x00000000040168b0                mario_medium_poly_right_hand_closed
+                0x00000000040168d0                mario_metal_medium_poly_right_hand_closed
+                0x00000000040169f0                mario_medium_poly_left_thigh_dl
+                0x0000000004016a80                mario_medium_poly_left_thigh
+                0x0000000004016ab0                mario_metal_medium_poly_left_thigh
+                0x0000000004016c18                mario_medium_poly_left_leg_shared_dl
+                0x0000000004016e68                mario_medium_poly_left_foot_shared_dl
+                0x0000000004016f30                mario_medium_poly_left_foot
+                0x0000000004017040                mario_medium_poly_right_thigh_shared_dl
+                0x00000000040170d0                mario_medium_poly_right_thigh
+                0x00000000040171e0                mario_medium_poly_right_leg_shared_dl
+                0x00000000040173d0                mario_medium_poly_right_foot_dl
+                0x0000000004017498                mario_medium_poly_right_foot
+                0x00000000040174d8                mario_metal_medium_poly_right_foot
+                0x0000000004017a38                mario_medium_poly_yellow_button_dl
+                0x0000000004017a88                mario_medium_poly_pants_overalls_shared_dl
+                0x0000000004017bd0                mario_medium_poly_tshirt_shared_dl
+                0x0000000004017c70                mario_medium_poly_torso_dl
+                0x0000000004017c98                mario_medium_poly_torso
+                0x0000000004017d18                mario_metal_medium_poly_torso
+                0x0000000004017de8                mario_low_poly_butt_dl
+                0x0000000004017e88                mario_low_poly_butt
+                0x0000000004017eb8                mario_metal_low_poly_butt
+                0x0000000004017ff0                mario_low_poly_left_arm_shared_dl
+                0x0000000004018040                mario_low_poly_left_arm
+                0x0000000004018120                mario_low_poly_left_forearm_shared_dl
+                0x00000000040181f0                mario_low_poly_left_hand_closed_shared_dl
+                0x0000000004018250                mario_low_poly_left_hand_closed
+                0x0000000004018330                mario_low_poly_right_arm_shared_dl
+                0x0000000004018380                mario_low_poly_right_arm
+                0x0000000004018460                mario_low_poly_right_forearm_shared_dl
+                0x0000000004018530                mario_low_poly_right_hand_closed_dl
+                0x0000000004018590                mario_low_poly_right_hand_closed
+                0x00000000040185b0                mario_metal_low_poly_right_hand_closed
+                0x00000000040186c0                mario_low_poly_left_thigh_dl
+                0x0000000004018730                mario_low_poly_left_thigh
+                0x0000000004018760                mario_metal_low_poly_left_thigh
+                0x00000000040188b8                mario_low_poly_left_leg_shared_dl
+                0x0000000004018a08                mario_low_poly_left_foot_shared_dl
+                0x0000000004018a78                mario_low_poly_left_foot
+                0x0000000004018b78                mario_low_poly_right_thigh_shared_dl
+                0x0000000004018be8                mario_low_poly_right_thigh
+                0x0000000004018ce8                mario_low_poly_right_leg_shared_dl
+                0x0000000004018e38                mario_low_poly_right_foot_dl
+                0x0000000004018ea8                mario_low_poly_right_foot
+                0x0000000004018ee8                mario_metal_low_poly_right_foot
+                0x0000000004019138                mario_low_poly_yellow_button_dl
+                0x0000000004019168                mario_low_poly_pants_overalls_shared_dl
+                0x00000000040191f0                mario_low_poly_tshirt_shared_dl
+                0x0000000004019248                mario_low_poly_torso_dl
+                0x0000000004019270                mario_low_poly_torso
+                0x00000000040192f0                mario_metal_low_poly_torso
+                0x0000000004019640                mario_low_poly_mario_m_logo_dl
+                0x0000000004019668                mario_low_poly_eyes_cap_on_dl
+                0x0000000004019690                mario_low_poly_mustache_cap_on_dl
+                0x00000000040196d0                mario_low_poly_face_part_cap_on_dl
+                0x0000000004019740                mario_low_poly_face_cap_dl
+                0x00000000040197c0                mario_low_poly_face_back_hair_cap_on_dl
+                0x00000000040197f0                mario_low_poly_face_cap_on_dl
+                0x0000000004019830                mario_low_poly_cap_on_eyes_front
+                0x0000000004019900                mario_low_poly_cap_on_eyes_half_closed
+                0x00000000040199d0                mario_low_poly_cap_on_eyes_closed
+                0x0000000004019aa0                mario_low_poly_cap_on_eyes_right
+                0x0000000004019b70                mario_low_poly_cap_on_eyes_left
+                0x0000000004019c40                mario_low_poly_cap_on_eyes_up
+                0x0000000004019d10                mario_low_poly_cap_on_eyes_down
+                0x0000000004019de0                mario_low_poly_cap_on_eyes_dead
+                0x0000000004019eb0                mario_metal_low_poly_cap_on
+                0x000000000401a198                mario_low_poly_mario_eyes_cap_off_dl
+                0x000000000401a1c0                mario_low_poly_mustache_cap_off_dl
+                0x000000000401a200                mario_low_poly_face_part_cap_off_dl
+                0x000000000401a270                mario_low_poly_face_hair_cap_off_dl
+                0x000000000401a338                mario_low_poly_face_cap_off_dl
+                0x000000000401a360                mario_low_poly_cap_off_eyes_front
+                0x000000000401a410                mario_low_poly_cap_off_eyes_half_closed
+                0x000000000401a4c0                mario_low_poly_cap_off_eyes_closed
+                0x000000000401a570                mario_low_poly_cap_off_eyes_right
+                0x000000000401a620                mario_low_poly_cap_off_eyes_left
+                0x000000000401a6d0                mario_low_poly_cap_off_eyes_up
+                0x000000000401a780                mario_low_poly_cap_off_eyes_down
+                0x000000000401a830                mario_low_poly_cap_off_eyes_dead
+                0x000000000401a8e0                mario_metal_low_poly_cap_off
+                0x000000000401ae38                mario_left_hand_open_shared_dl
+                0x000000000401b070                mario_left_hand_open
+                0x000000000401b5c0                mario_right_hand_open_dl
+                0x000000000401b7f8                mario_right_hand_open
+                0x000000000401b818                mario_metal_right_hand_open
+                0x000000000401bf78                mario_right_hand_cap_m_logo_dl
+                0x000000000401bfa0                mario_right_hand_cap_top_dl
+                0x000000000401c110                mario_right_hand_cap_hand_position_dl
+                0x000000000401c2a0                mario_right_hand_cap_bottom_dl
+                0x000000000401c2f0                mario_right_hand_cap_dl
+                0x000000000401c450                mario_right_hand_cap_wings_half_1_dl
+                0x000000000401c480                mario_right_hand_cap_wings_half_2_dl
+                0x000000000401c4b0                mario_right_hand_cap_wings_intial_dl
+                0x000000000401c508                mario_right_hand_cap_wings_end_dl
+                0x000000000401c528                mario_right_hand_cap
+                0x000000000401c5a8                mario_right_hand_cap_wings
+                0x000000000401c600                mario_metal_right_hand_cap_shared_dl
+                0x000000000401c648                mario_metal_right_hand_cap_shared_dl_wings
+                0x000000000401d050                mario_right_hand_peace_shared_dl
+                0x000000000401d300                mario_right_hand_peace
+                0x000000000401d700                mario_cap_unused_m_logo_dl
+                0x000000000401d738                mario_cap_unused_base_top_dl
+                0x000000000401d898                mario_cap_unused_base_bottom_dl
+                0x000000000401d8e0                mario_cap_unused_base_dl
+                0x000000000401da48                mario_wings_half_1_unused_dl
+                0x000000000401da78                mario_wings_half_2_unused_dl
+                0x000000000401daa8                mario_cap_wings_unused_intial_dl
+                0x000000000401db00                mario_cap_wings_unused_end_dl
+                0x000000000401db28                mario_cap_unused_dl
+                0x000000000401dbb8                mario_metal_cap_unused_dl
+                0x000000000401dc60                mario_cap_wings_unused
+                0x000000000401dcb8                mario_metal_cap_wings_unused
+                0x000000000401dd90                mario_wings_half_1_dl
+                0x000000000401ddb0                mario_wings_half_2_dl
+                0x000000000401ddd0                mario_cap_wings
+                0x000000000401de88                mario_cap_wings_transparent
+                0x000000000401df40                mario_metal_cap_wings
+                0x000000000401dff8                mario_metal_cap_wings_transparent
+                0x000000000401f130                bubble_seg4_dl_0401DD60
+                0x000000000401f1b0                bubble_seg4_dl_0401DDE0
+                0x0000000004022a70                smoke_seg4_dl_040216A0
+                0x0000000004022ae8                smoke_seg4_dl_04021718
+                0x0000000004022b00                smoke_seg4_dl_04021730
+                0x0000000004022b18                smoke_seg4_dl_04021748
+                0x0000000004022b30                smoke_seg4_dl_04021760
+                0x0000000004022b48                smoke_seg4_dl_04021778
+                0x0000000004022b60                smoke_seg4_dl_04021790
+                0x0000000004022b78                smoke_seg4_dl_040217A8
+                0x00000000040233d0                burn_smoke_seg4_dl_04022000
+                0x00000000040233f8                burn_smoke_seg4_dl_04022028
+                0x0000000004023418                burn_smoke_seg4_dl_04022048
+                0x0000000004023440                burn_smoke_seg4_dl_04022070
+                0x0000000004026518                stomp_smoke_seg4_dl_04025148
+                0x0000000004026560                stomp_smoke_seg4_dl_04025190
+                0x0000000004026598                stomp_smoke_seg4_dl_040251C8
+                0x00000000040265b0                stomp_smoke_seg4_dl_040251E0
+                0x00000000040265c8                stomp_smoke_seg4_dl_040251F8
+                0x00000000040265e0                stomp_smoke_seg4_dl_04025210
+                0x00000000040265f8                stomp_smoke_seg4_dl_04025228
+                0x0000000004026610                stomp_smoke_seg4_dl_04025240
+                0x0000000004026628                stomp_smoke_seg4_dl_04025258
+                0x0000000004026640                stomp_smoke_seg4_dl_04025270
+                0x0000000004026658                stomp_smoke_seg4_dl_04025288
+                0x0000000004026670                stomp_smoke_seg4_dl_040252A0
+                0x0000000004026688                stomp_smoke_seg4_dl_040252B8
+                0x00000000040266a0                stomp_smoke_seg4_dl_040252D0
+                0x00000000040266b8                stomp_smoke_seg4_dl_040252E8
+                0x00000000040266d0                stomp_smoke_seg4_dl_04025300
+                0x0000000004028728                water_wave_seg4_dl_04027358
+                0x0000000004028770                water_wave_seg4_dl_040273A0
+                0x00000000040287a8                water_wave_seg4_dl_040273D8
+                0x00000000040287c0                water_wave_seg4_dl_040273F0
+                0x00000000040287d8                water_wave_seg4_dl_04027408
+                0x00000000040287f0                water_wave_seg4_dl_04027420
+                0x0000000004028808                water_wave_seg4_dl_04027438
+                0x000000000402b860                sparkles_seg4_dl_0402A490
+                0x000000000402b8c8                sparkles_seg4_dl_0402A4F8
+                0x000000000402b8e0                sparkles_seg4_dl_0402A510
+                0x000000000402b8f8                sparkles_seg4_dl_0402A528
+                0x000000000402b910                sparkles_seg4_dl_0402A540
+                0x000000000402b928                sparkles_seg4_dl_0402A558
+                0x000000000402b940                sparkles_seg4_dl_0402A570
+                0x0000000004033998                water_splash_seg4_dl_040325C8
+                0x0000000004033a10                water_splash_seg4_dl_04032640
+                0x0000000004033a28                water_splash_seg4_dl_04032658
+                0x0000000004033a40                water_splash_seg4_dl_04032670
+                0x0000000004033a58                water_splash_seg4_dl_04032688
+                0x0000000004033a70                water_splash_seg4_dl_040326A0
+                0x0000000004033a88                water_splash_seg4_dl_040326B8
+                0x0000000004033aa0                water_splash_seg4_dl_040326D0
+                0x0000000004033ab8                water_splash_seg4_dl_040326E8
+                0x0000000004033d50                white_particle_small_dl_begin
+                0x0000000004033db0                white_particle_small_dl_end
+                0x0000000004033de8                white_particle_small_dl
+                0x0000000004033e00                white_particle_small_unused_dl
+                0x0000000004036658                sparkles_animation_seg4_dl_04035288
+                0x00000000040366d0                sparkles_animation_seg4_dl_04035300
+                0x00000000040366e8                sparkles_animation_seg4_dl_04035318
+                0x0000000004036700                sparkles_animation_seg4_dl_04035330
+                0x0000000004036718                sparkles_animation_seg4_dl_04035348
+                0x0000000004036730                sparkles_animation_seg4_dl_04035360
+
+.data1
+ *(.data1)
+                0x0000000004036750                . = .
+                0x000000000403e740                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0000000004036750                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000004036750                . = .
+                0x0000000004036750                __bss_start = .
+                0x0000000004036750                _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x0000000004036750        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x0000000004036750                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000004036750                . = ALIGN (0x4)
+                0x0000000004036750                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000004036750                . = ALIGN (0x4)
+                0x0000000004036750                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x0000000004036750                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x0000000000000000       0x20
+ .options       0x0000000000000000       0x20 build/jp/actors/group0.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x0000000004036750      0x198
+ *(.gptab.data)
+ .gptab.data    0x0000000004036750      0x198 build/jp/actors/group0.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/actors/group0.elf elf32-tradbigmips)
+
+.mdebug         0x0000000000000000    0x15e60
+ .mdebug        0x0000000000000000    0x18f10 build/jp/actors/group0.o

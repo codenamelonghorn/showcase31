@@ -1,0 +1,496 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x7000000
+LOAD build/us/bin/inside.elf
+LOAD build/us/levels/castle_inside/leveldata.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x0000000000400094                . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x0000000000400094       0x18
+ *(.reginfo)
+ .reginfo       0x0000000000400094       0x18 build/us/levels/castle_inside/leveldata.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x00000000004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x00000000004000ac        0x0 build/us/levels/castle_inside/leveldata.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x00000000004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x0000000007000000        0x0
+                0x0000000007000000                _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x0000000007000000                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x0000000007000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000007000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000007000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000007000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x0000000007000000                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x0000000007000000    0x79220
+                0x0000000007000000                _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000007000000    0x79220 build/us/levels/castle_inside/leveldata.o
+                0x00000000070226d8                inside_castle_seg7_dl_070225D8
+                0x0000000007022710                inside_castle_seg7_dl_07022610
+                0x00000000070235c0                inside_castle_seg7_dl_070234C0
+                0x0000000007023620                inside_castle_seg7_dl_07023520
+                0x0000000007023720                bob_painting
+                0x0000000007023798                ccm_painting
+                0x0000000007023810                wf_painting
+                0x0000000007023888                jrb_painting
+                0x0000000007023900                lll_painting
+                0x0000000007023978                ssl_painting
+                0x00000000070239f0                hmc_painting
+                0x0000000007023a68                ddd_painting
+                0x0000000007023ae0                wdw_painting
+                0x0000000007023b58                thi_tiny_painting
+                0x0000000007023bd0                ttm_painting
+                0x0000000007023c48                ttc_painting
+                0x0000000007023cc0                sl_painting
+                0x0000000007023d38                thi_huge_painting
+                0x0000000007023eb0                inside_castle_seg7_dl_07023DB0
+                0x00000000070290d0                inside_castle_seg7_dl_07028FD0
+                0x0000000007029678                inside_castle_seg7_dl_07029578
+                0x000000000702a750                inside_castle_seg7_dl_0702A650
+                0x000000000702a980                dl_castle_lobby_wing_cap_light
+                0x000000000702ab10                inside_castle_seg7_dl_0702AA10
+                0x000000000702ac20                inside_castle_seg7_dl_0702AB20
+                0x000000000702e508                inside_castle_seg7_dl_0702E408
+                0x000000000702fe30                inside_castle_seg7_dl_0702FD30
+                0x0000000007030a10                inside_castle_seg7_vertex_07030940
+                0x0000000007031258                inside_castle_seg7_dl_07031168
+                0x0000000007031688                inside_castle_seg7_dl_07031588
+                0x0000000007031820                inside_castle_seg7_dl_07031720
+                0x0000000007031930                inside_castle_seg7_dl_07031830
+                0x00000000070330c0                inside_castle_seg7_dl_07032FC0
+                0x0000000007033258                inside_castle_seg7_dl_07033158
+                0x0000000007034e88                inside_castle_seg7_dl_07034D88
+                0x0000000007035278                inside_castle_seg7_dl_07035178
+                0x0000000007035388                inside_castle_seg7_dl_07035288
+                0x0000000007036e88                inside_castle_seg7_dl_07036D88
+                0x0000000007037a88                inside_castle_seg7_dl_07037988
+                0x0000000007037cf8                inside_castle_seg7_dl_07037BF8
+                0x0000000007037ee8                inside_castle_seg7_dl_07037DE8
+                0x0000000007038340                dl_castle_aquarium_light
+                0x0000000007038450                inside_castle_seg7_dl_07038350
+                0x000000000703a7c8                inside_castle_seg7_dl_0703A6C8
+                0x000000000703a908                inside_castle_seg7_dl_0703A808
+                0x000000000703bb08                inside_castle_seg7_dl_0703BA08
+                0x000000000703bdb8                inside_castle_seg7_dl_0703BCB8
+                0x000000000703c0a8                inside_castle_seg7_dl_0703BFA8
+                0x000000000703e7f0                inside_castle_seg7_dl_0703E6F0
+                0x0000000007043128                inside_castle_seg7_dl_07043028
+                0x0000000007043c48                inside_castle_seg7_dl_07043B48
+                0x0000000007043dd8                inside_castle_seg7_dl_07043CD8
+                0x000000000704a1e8                inside_castle_seg7_dl_0704A0E8
+                0x000000000704a3e0                inside_castle_seg7_dl_0704A2E0
+                0x000000000704ab98                inside_castle_seg7_dl_0704AA98
+                0x000000000704c8d8                inside_castle_seg7_dl_0704C7D8
+                0x0000000007050a38                inside_castle_seg7_dl_07050938
+                0x00000000070513f8                inside_castle_seg7_dl_070512F8
+                0x0000000007051778                inside_castle_seg7_dl_07051678
+                0x0000000007051ac8                inside_castle_seg7_dl_070519C8
+                0x0000000007051c60                inside_castle_seg7_dl_07051B60
+                0x00000000070559d0                inside_castle_seg7_dl_070558D0
+                0x00000000070573a0                inside_castle_seg7_dl_070572A0
+                0x0000000007058000                inside_castle_seg7_dl_07057F00
+                0x0000000007058a50                inside_castle_seg7_dl_07058950
+                0x0000000007059290                inside_castle_seg7_dl_07059190
+                0x000000000705e188                inside_castle_seg7_dl_0705E088
+                0x000000000705e3a0                inside_castle_seg7_dl_0705E2A0
+                0x000000000705e550                inside_castle_seg7_dl_0705E450
+                0x00000000070617e8                inside_castle_seg7_dl_070616E8
+                0x0000000007061d20                inside_castle_seg7_dl_07061C20
+                0x0000000007064c78                inside_castle_seg7_dl_07064B78
+                0x0000000007064e58                inside_castle_seg7_dl_07064D58
+                0x0000000007066de0                inside_castle_seg7_dl_07066CE0
+                0x0000000007066f90                inside_castle_seg7_dl_07066E90
+                0x00000000070670a0                inside_castle_seg7_dl_07066FA0
+                0x0000000007068950                inside_castle_seg7_dl_07068850
+                0x0000000007068c10                inside_castle_seg7_dl_07068B10
+                0x0000000007068c88                inside_castle_seg7_area_1_collision
+                0x000000000706e464                inside_castle_seg7_area_2_collision
+                0x0000000007073bac                inside_castle_seg7_area_3_collision
+                0x00000000070776b4                inside_castle_seg7_collision_ddd_warp
+                0x000000000707778c                inside_castle_seg7_collision_ddd_warp_2
+                0x0000000007077864                inside_castle_seg7_area_1_macro_objs
+                0x00000000070778e0                inside_castle_seg7_area_2_macro_objs
+                0x00000000070778ec                inside_castle_seg7_area_3_macro_objs
+                0x000000000707792c                inside_castle_seg7_area_1_rooms
+                0x000000000707818c                inside_castle_seg7_area_2_rooms
+                0x0000000007078970                inside_castle_seg7_area_3_rooms
+                0x0000000007078ee4                inside_castle_seg7_collision_floor_trap
+                0x0000000007078f14                inside_castle_seg7_collision_star_door
+                0x0000000007078f80                inside_castle_seg7_collision_water_level_pillar
+                0x0000000007079168                inside_castle_seg7_trajectory_mips
+                0x00000000070791f0                inside_castle_movtex_green_room_water
+                0x0000000007079200                inside_castle_movtex_moat_water
+
+.data1
+ *(.data1)
+                0x0000000007079220                . = .
+                0x0000000007081210                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0000000007079220                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000007079220                . = .
+                0x0000000007079220                __bss_start = .
+                0x0000000007079220                _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x0000000007079220        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x0000000007079220                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000007079220                . = ALIGN (0x4)
+                0x0000000007079220                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000007079220                . = ALIGN (0x4)
+                0x0000000007079220                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x0000000007079220                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x0000000000000000       0x20
+ .options       0x0000000000000000       0x20 build/us/levels/castle_inside/leveldata.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x0000000007079220      0x368
+ *(.gptab.data)
+ .gptab.data    0x0000000007079220      0x368 build/us/levels/castle_inside/leveldata.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/us/levels/castle_inside/leveldata.elf elf32-tradbigmips)
+
+.mdebug         0x0000000000000000    0x315c0
+ .mdebug        0x0000000000000000    0x385c8 build/us/levels/castle_inside/leveldata.o
