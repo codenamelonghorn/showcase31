@@ -1,3 +1,3 @@
-showcase31 source code
+leaked showcase31 source code
 
-steal anything from here it's outdated as hell a new version of this is in the works
+take anything from here it's all obsolete shit
