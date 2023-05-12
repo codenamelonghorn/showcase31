@@ -1,3 +1,4 @@
-leaked showcase31 source code
+# Showcase 31
 
-take anything from here it's all obsolete shit
+code by bonmario
+take anything from here, it's all obsolete shit
